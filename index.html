@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap5.0.0.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <title>Web Socket Tester</title>
+</head>
+
+<body class="bg-light">
+    
+<!-- Containter: -->
+<div class="container-fluid mt-2 mb-2">   
+    <div class="row">
+    
+        <div class="col-sm-12 col-md-5 col-lg-4 col-xl-4 p-0">
+        
+            <!-- Containter: -->
+            <div class="container-fluid mt-2 mb-2">   
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 rounded">
+                        
+                        <!-- Containter: -->
+                        <div class="container-fluid mt-2 mb-2">   
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <h2 class="mt-1 mb-1 pt-2 pb-2 bg-success text-white text-center rounded">Web Socket Tester</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Containter -->
+                        
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 rounded">
+                        
+                        <!-- Containter: -->
+                        <div class="container-fluid mt-2 mb-2">   
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <h3 class="mt-1 mb-1">Configs:</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Containter -->
+                        
+                        <!-- Containter: -->
+                        <div class="container-fluid mt-2 mb-2">   
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 pb-4 bg-white rounded">
+<div class="mt-3">
+    <label for="exampleInputEmail1" class="form-label">Backend url:</label>
+    <input type="text" class="form-control" id="backend" value="http://127.0.0.1" placeholder="http://127.0.0.1">
+</div>
+  
+<div class="mt-3">
+    <label for="exampleInputEmail1" class="form-label">Websocket port:</label>
+    <input type="text" class="form-control" id="port" value="6001" placeholder="6001">
+</div>
+  
+<div class="mt-3">
+    <button type="submit" class="btn btn-success" id="connect">Connect</button>
+    <button type="submit" class="btn btn-danger" id="disconnect">Disconnect</button>
+</div>
+  
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Containter -->
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- /Containter -->
+
+        </div>
+        
+        <div class="col-sm-12 col-md-7 col-lg-8 col-xl-8 p-0">
+
+            <!-- Containter: -->
+            <div class="container-fluid mt-2 mb-2">   
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 rounded">
+                        
+                        
+                        <!-- Containter: -->
+                        <div class="container-fluid mt-2 mb-2">   
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <h3 class="mt-1 mb-1">Logs:</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Containter -->
+                        
+                        <!-- Containter: -->
+                        <div class="container-fluid mt-2 mb-2">   
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 bg-white rounded p-0">
+                      
+<!-- Log Table: -->
+<div class="table-wrapper">
+    <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Date:</th>
+            <th scope="col">Message:</th>
+        </tr>
+    </thead>
+    <tbody id="log-table">
+    </tbody>            
+    </table>
+</div> 
+<!-- /Log Table -->
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Containter -->
+                        
+                        
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-3 rounded">
+                        
+                        
+                        <!-- Containter: -->
+                        <div class="container-fluid mt-2 mb-2">   
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <h3 class="mt-1 mb-1">Summary:</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Containter -->
+                        
+                        <!-- Containter: -->
+                        <!--
+                        <div class="container-fluid mt-2 mb-2">   
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 bg-white rounded">
+                                    summary...
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                        <!-- /Containter -->
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- /Containter -->
+
+        </div>
+        
+    </div>
+</div>
+
+<!-- Containter: -->
+<div class="container-fluid mt-5 mb-2">   
+    <div class="row">
+    
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        
+            <!-- Containter: -->
+            <div class="container-fluid mt-2 mb-2">   
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        
+                        <!-- Containter: -->
+                        <div class="container-fluid mt-2 mb-2 border-top pt-3">   
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    Author: <a href="https://github.com/vladsalabun">Vlad Salabun</a><br>
+                                    ver. 1.0
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Containter -->
+                        
+                    </div>
+
+                </div>
+            </div>
+            <!-- /Containter -->
+
+        </div>
+        
+    </div>
+</div>
+<!-- /Containter -->
+    <script src="js/vendor/jQuery3.4.1.js"></script>
+    <script src="js/vendor/bootstrap5.0.0.bundle.js"></script>
+    
+    <script src="http://127.0.0.1:6001/socket.io/socket.io.js"></script>
+    <!-- <script src="js/vendor/laravel-echo-server-compiled.js"></script>-->
+    
+    <script src="js/vendor/moment.js"></script>
+    
+    <script src="js/config.js"></script>
+    <script src="js/functions/logTable.js"></script>
+
+    <script type="module" src="js/init.js"></script>
+    <script src="js/functions/connect.js"></script>
+</body>
+</html>
