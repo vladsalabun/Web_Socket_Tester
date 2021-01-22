@@ -1,19 +1,5 @@
-import Echo from "./vendor/laravel-echo.js"
+$('#host').val(host);
+$('#port').val(port);
+$('#channel').val(channel);
+$('#event').val(event);
 
-if (typeof io !== 'undefined') {
-
-    window.Echo = new Echo({
-        broadcaster: 'socket.io',
-        host: endpoint,
-    });
-    
-    log('Hello world!', 'success');
-
-} else {
-
-    log(
-        `socket.io not exists!`, 
-        'danger'
-    );
-    
-}

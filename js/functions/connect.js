@@ -1,9 +1,38 @@
-$('body').on('click', '#connect', function() {
+import Echo from "../vendor/laravel-echo.js"
+/**
+ *
+ */
+function connectToWebSocket() {
 
-    endpoint = $('#backend').val() + `:` + $('#port').val();
+    if (typeof io !== 'undefined') {
+
+        webSocket = new Echo({
+            broadcaster: 'socket.io',
+            host: host + ':' + port,
+        });
+        log('Hello world!', 'success');
+        
+    } else {
+
+        log(
+            `socket.io not exists!`, 
+            'danger'
+        );
+        
+    }
+    
+    listenChannel();
+}
+
+$('body').on('click', '#connect', function() {
+    $('#log-table').empty();
+
+    disconnectFromWebSocket();
+
+    setConfigs();
 
     log(
-        `Trying to connect to: ` + endpoint, 
+        `Connect to: ` + host + ':' + port + ` | Channel: ` + channel + `, event: ` + event, 
         'white'
     );
 
@@ -11,17 +40,20 @@ $('body').on('click', '#connect', function() {
     return false;
 });
 
-/**
- *
- */
-function connectToWebSocket() {
 
+function listenChannel() {
 
+    console.log(webSocket, channel, event);
 
-
-    Echo.channel(channel).listen('.newMessage', (message) => {
-        console.log('listen to newMessage', message);
+    webSocket.channel(channel).listen(event, (message) => {
+        console.log('message', message);        
+        log(
+            JSON.stringify(message), 
+            'white'
+        );
     });
+
+    
    /*
     Echo.leaveChannel(channel);
    
@@ -30,20 +62,15 @@ function connectToWebSocket() {
     });
 */
 
-   
-/*
-connecting
-reconnect
-*/
-
-
 
 }
 
 $('body').on('click', '#disconnect', function() {
 
+    setConfigs();
+
     log(
-        `Trying to disconnect from: ` + endpoint, 
+        `Disconnect from: ` + host + ':' + port + ` | Channel: ` + channel + `, event: ` + event, 
         'white'
     );
 
@@ -56,17 +83,17 @@ $('body').on('click', '#disconnect', function() {
  */
 function disconnectFromWebSocket() {
 
-    Echo.leave(channel);
-
+    if(jQuery.isEmptyObject(webSocket)) {
+    
+    } else {
+        webSocket.leave(channel);
+    }
+    
 }
 
-
-/*
-// client-side
-io.on("connect", () => {
-  console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-});
-
-io.on("disconnect", () => {
-  console.log(socket.id); // undefined
-});*/
+function setConfigs() {
+    host = $('#host').val();
+    port = $('#port').val();
+    channel = $('#channel').val();
+    event = $('#event').val();
+}
