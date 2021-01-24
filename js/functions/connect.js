@@ -10,6 +10,9 @@ function connectToWebSocket() {
             broadcaster: 'socket.io',
             host: host + ':' + port,
         });
+        
+        
+        console.log(webSocket);
         log('Hello world!', 'success');
         
     } else {
